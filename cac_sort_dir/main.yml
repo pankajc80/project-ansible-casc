@@ -1,0 +1,55 @@
+---
+- name: Filetree read test
+  hosts: localhost
+  gather_facts: false
+  vars:
+    object_lookups:
+      - controller_settings
+      - controller_organizations
+      - controller_labels
+      - controller_user_accounts
+      - controller_teams
+      - controller_credential_types
+      - controller_credentials
+      - controller_credential_input_sources
+      - controller_notifications
+      - controller_projects
+      - controller_execution_environments
+      - controller_applications
+      # - controller_inventories
+      # - controller_inventory_sources
+      - controller_instance_groups
+      - controller_templates
+      - controller_workflows
+      - controller_schedules
+      - controller_roles
+      # - controller_groups
+      # - controller_hosts
+  tasks:
+    - name: Create object directories
+      ansible.builtin.include_tasks:
+        file: tasks/createdir.yml
+      loop: "{{ object_lookups }}"
+
+    - name: Read files for orgs
+      ansible.builtin.find:
+        paths: /tmp/filetree_output
+        recurse: true
+        contains: controller_organizations
+        read_whole_file: true
+      register: current_orgs
+
+    - name: Move orgs into proper file structure
+      ansible.builtin.include_tasks:
+        file: tasks/orgs.yml
+      loop: "{{ current_orgs.files }}"
+      loop_control:
+        loop_var: object_org
+
+    - name: Find files and move them into the proper structure
+      ansible.builtin.include_tasks:
+        file: tasks/sortfile.yml
+      loop: "{{ object_lookups }}"
+      loop_control:
+        loop_var: object_file
+      when: object_file != 'controller_organizations'

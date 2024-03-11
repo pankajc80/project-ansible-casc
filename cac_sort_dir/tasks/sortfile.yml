@@ -1,0 +1,14 @@
+---
+- name: Find {{ object_file }} files
+  ansible.builtin.find:
+    paths: /tmp/filetree_output
+    recurse: true
+    contains: "{{ object_file }}"
+    read_whole_file: true
+  register: current_objects
+
+- name: Copy files
+  ansible.builtin.copy:
+    src: "{{ item.path }}"
+    dest: ../control_vars/{{ object_file }}
+  loop: "{{ current_objects.files }}"

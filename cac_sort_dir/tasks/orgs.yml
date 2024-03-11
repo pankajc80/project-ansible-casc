@@ -1,0 +1,9 @@
+---
+- name: Extract org name from the file path
+  ansible.builtin.set_fact:
+    extracted_regex: "{{object_org.path | regex_search('\/filetree_output\/([^/]+)\/current_organization.yaml' , '\\1') }}"
+
+- name: Copy {{ extracted_regex }} org to new directory path
+  ansible.builtin.copy:
+    src: "{{object_org.path}}"
+    dest: ../control_vars/controller_organizations/{{extracted_regex[0]}}_current_organizations.yaml
