@@ -4,7 +4,7 @@ repo_path: ./repo_dir
 repo_name: controller_objects
 branch: dev
 gituser: pankajc80
-githubtoken: 
+  #githubtoken: Specify this value using survey option in Automation Controller  
 object_lookups:
   - controller_settings
   - controller_organizations
