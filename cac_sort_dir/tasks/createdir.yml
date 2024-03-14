@@ -1,5 +1,6 @@
 ---
 - name: create directory {{ item }}
   ansible.builtin.file:
-    path: ../control_vars/{{ item }}
+    #path: ../control_vars/{{ item }}
+    path: "{{ repo_path }}/{{ repo_name }}/control_vars/{{ item }}"
     state: directory

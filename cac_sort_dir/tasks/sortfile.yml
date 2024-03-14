@@ -10,5 +10,5 @@
 - name: Copy files
   ansible.builtin.copy:
     src: "{{ item.path }}"
-    dest: ../control_vars/{{ object_file }}
+    dest: "{{ repo_path }}/{{ repo_name }}/control_vars/{{ object_file }}"
   loop: "{{ current_objects.files }}"
