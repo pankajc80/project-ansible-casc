@@ -50,7 +50,7 @@
 
     - name: Include task to create directory structure for controller objects
       ansible.builtin.include_tasks:
-        file: cac_dir/main.yml
+        file: cac_sort_dir/main.yml
 
     - name: Add and Commit files to Remote repo
       ansible.builtin.shell: |
