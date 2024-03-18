@@ -27,3 +27,28 @@ object_lookups:
   - controller_roles
   - controller_groups
   - controller_hosts
+
+dir_orgs_vars: "{{ repo_path }}/{{ repo_name }}/control_vars"
+
+# Controller Directory Path
+filetree_controller_settings: "{{ dir_orgs_vars }}/controller_settings/" # {{ orgs }}/env/{{ env }}/controller_settings.d/"
+filetree_controller_organizations: "{{ dir_orgs_vars }}/controller_organizations/"
+filetree_controller_labels: "{{ dir_orgs_vars }}/controller_labels/"
+filetree_controller_user_accounts: "{{ dir_orgs_vars }}/controller_user_accounts/"
+filetree_controller_teams: "{{ dir_orgs_vars }}/controller_teams/"
+filetree_controller_credential_types: "{{ dir_orgs_vars }}/controller_credential_types/"
+filetree_controller_credentials: "{{ dir_orgs_vars }}/controller_credentials/"
+filetree_controller_credential_input_sources: "{{ dir_orgs_vars }}/controller_credential_input_sources/"
+filetree_controller_notifications: "{{ dir_orgs_vars }}/controller_notification_templates/"
+filetree_controller_projects: "{{ dir_orgs_vars }}/controller_projects/"
+filetree_controller_execution_environments: "{{ dir_orgs_vars }}/controller_execution_environments/"
+filetree_controller_applications: "{{ dir_orgs_vars }}/controller_applications/"
+filetree_controller_inventories: "{{ dir_orgs_vars }}/controller_inventories/"
+filetree_controller_inventory_sources: "{{ dir_orgs_vars }}/controller_inventory_sources/"
+filetree_controller_instance_groups: "{{ dir_orgs_vars }}/controller_instance_groups/"
+filetree_controller_hosts: "{{ dir_orgs_vars }}/controller_hosts/"
+filetree_controller_groups: "{{ dir_orgs_vars }}/controller_groups/"
+filetree_controller_templates: "{{ dir_orgs_vars }}/controller_job_templates/"
+filetree_controller_workflow_job_templates: "{{ dir_orgs_vars }}/controller_workflow_job_templates/"
+filetree_controller_schedules: "{{ dir_orgs_vars }}/controller_schedules/"
+filetree_controller_roles: "{{ dir_orgs_vars }}/controller_roles/"
