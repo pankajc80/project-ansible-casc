@@ -45,6 +45,14 @@
         dest: "{{ repo_path }}/{{ repo_name }}"
         version: "{{ branch }}"
 
+    # Include this task and disable filetree_read role so as to only execute Dispatch role
+    - name: Include vars from control_vars directory
+      ansible.builtin.include_vars:
+        dir: "{{ repo_path }}/{{ repo_name }}/control_vars"
+        extensions:
+          - "yml"
+          - "yaml"
+
   roles:
     - role: infra.controller_configuration.filetree_read 
     - role: infra.controller_configuration.dispatch 

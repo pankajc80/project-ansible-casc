@@ -28,10 +28,11 @@ object_lookups:
   - controller_groups
   - controller_hosts
 
+# Variables for filetree_read operation
 dir_orgs_vars: "{{ repo_path }}/{{ repo_name }}/control_vars"
 
 # Controller Directory Path
-filetree_controller_settings: "{{ dir_orgs_vars }}/controller_settings/" # {{ orgs }}/env/{{ env }}/controller_settings.d/"
+filetree_controller_settings: "{{ dir_orgs_vars }}/controller_settings/"
 filetree_controller_organizations: "{{ dir_orgs_vars }}/controller_organizations/"
 filetree_controller_labels: "{{ dir_orgs_vars }}/controller_labels/"
 filetree_controller_user_accounts: "{{ dir_orgs_vars }}/controller_user_accounts/"

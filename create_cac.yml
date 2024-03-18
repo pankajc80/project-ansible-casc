@@ -48,7 +48,7 @@
         dest: "{{ repo_path }}/{{ repo_name }}"
         version: "{{ branch }}"
 
-    - name: Include task to create directory structure for controller objects
+    - name: Include task to create directory structure and copy controller object files
       ansible.builtin.include_tasks:
         file: cac_sort_dir/main.yml
 
