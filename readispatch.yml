@@ -54,7 +54,7 @@
           - "yaml"
 
   roles:
-    - role: infra.controller_configuration.filetree_read 
+    #- role: infra.controller_configuration.filetree_read 
     - role: infra.controller_configuration.dispatch 
     #   vars:
     #     controller_configuration_dispatcher_roles:
