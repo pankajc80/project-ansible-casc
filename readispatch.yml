@@ -56,9 +56,40 @@
   roles:
     #- role: infra.controller_configuration.filetree_read 
     - role: infra.controller_configuration.dispatch 
-    #   vars:
-    #     controller_configuration_dispatcher_roles:
-    #       - {role: settings, var: controller_settings, tags: settings}
+      vars:
+        controller_configuration_dispatcher_roles:
+          - {role: settings, var: controller_settings, tags: settings}
+      when: "'settings' in input_tag"
+
+    - role: infra.controller_configuration.dispatch 
+      vars:
+        controller_configuration_dispatcher_roles:
+           - {role: organizations, var: controller_organizations, tags: organizations}
+      when: "'organizations' in input_tag"
+
+    - role: infra.controller_configuration.dispatch 
+      vars:
+        controller_configuration_dispatcher_roles:
+          - {role: execution_environments, var: controller_execution_environments, tags: execution_environments}
+      when: "'execution_environments' in input_tag"
+
+    - role: infra.controller_configuration.dispatch 
+      vars:
+        controller_configuration_dispatcher_roles:
+          - {role: projects, var: controller_projects, tags: projects}
+      when: "'projects' in input_tag"
+
+    - role: infra.controller_configuration.dispatch 
+      vars:
+        controller_configuration_dispatcher_roles:
+           - {role: job_templates, var: controller_templates, tags: job_templates}
+      when: "'job_templates' in input_tag"
+
+    - role: infra.controller_configuration.dispatch 
+      vars:
+        controller_configuration_dispatcher_roles:
+           - {role: workflow_job_templates, var: controller_workflows, tags: workflow_job_templates}
+      when: "'workflow_job_templates' in input_tag"
 
   post_tasks:
     - name: "Delete the Authentication Token used"

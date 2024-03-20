@@ -28,6 +28,9 @@ object_lookups:
   - controller_groups
   - controller_hosts
 
+#input_tag:   Specify this variable using Survey as a Multi-Select List option
+
+
 # Variables for filetree_read operation
 dir_orgs_vars: "{{ repo_path }}/{{ repo_name }}/control_vars"
 

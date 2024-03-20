@@ -4,20 +4,20 @@
     file: tasks/createdir.yml
   loop: "{{ object_lookups }}"
 
-# - name: Read files for orgs
-#   ansible.builtin.find:
-#     paths: /tmp/filetree_output
-#     recurse: true
-#     contains: controller_organizations
-#     read_whole_file: true
-#   register: current_orgs
+- name: Read files for orgs
+  ansible.builtin.find:
+    paths: /tmp/filetree_output
+    recurse: true
+    contains: controller_organizations
+    read_whole_file: true
+  register: current_orgs
 
-# - name: Move orgs into proper file structure
-#   ansible.builtin.include_tasks:
-#     file: tasks/orgs.yml
-#   loop: "{{ current_orgs.files }}"
-#   loop_control:
-#     loop_var: object_org
+- name: Move orgs into proper file structure
+  ansible.builtin.include_tasks:
+    file: tasks/orgs.yml
+  loop: "{{ current_orgs.files }}"
+  loop_control:
+    loop_var: object_org
 
 - name: Find files and move them into the proper structure
   ansible.builtin.include_tasks:
